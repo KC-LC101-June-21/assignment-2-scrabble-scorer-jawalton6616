@@ -1,13 +1,13 @@
 // inspired by https://exercism.io/tracks/javascript/exercises/etl/solutions/91f99a3cca9548cebe5975d7ebca6a85
 const input = require("readline-sync");
 const oldPointStructure = {
-  1: ['A', 'E', 'I', 'O', 'U', 'L', 'N', 'R', 'S', 'T'],
-  2: ['D', 'G'],
-  3: ['B', 'C', 'M', 'P'],
-  4: ['F', 'H', 'V', 'W', 'Y'],
-  5: ['K'],
-  8: ['J', 'X'],
-  10: ['Q', 'Z']
+  1: ['a', 'e', 'i', 'o', 'u', 'l', 'n', 'r', 's', 't'],
+  2: ['d', 'g'],
+  3: ['b', 'c', 'm', 'p'],
+  4: ['f', 'h', 'v', 'w', 'y'],
+  5: ['k'],
+  8: ['j', 'x'],
+  10: ['q', 'z']
 };
 
 function transform(obj) {
@@ -123,17 +123,17 @@ const scoringAlgorithms = [
 {
   name:"Simple Score",
   description:'Each letter is worth 1 point.',
-  scoringFunction:simpleScore,
+  scorerFunction:simpleScore,
 },
 {
   name:"Bonus Vowels",
   description:'Vowels are 3 pts, consonants are 1 pt.',
-  scoringFunction:vowelBonusScore,
+  scorerFunction:vowelBonusScore,
 },
 {
   name:"Scrabble",
   description:'The traditional scoring algorithm.',
-  scoringFunction:scrabbleScore,
+  scorerFunction:scrabbleScore,
 }];
 
 
@@ -141,13 +141,13 @@ function scorerPrompt(word) {
   let scoringPref = input.question(`Which scoring algorithm would you like to use?\n\n0 - ${scoringAlgorithms[0].name}: ${scoringAlgorithms[0].description}\n1 - ${scoringAlgorithms[1].name}: ${scoringAlgorithms[1].description}\n2 - ${scoringAlgorithms[2].name}: ${scoringAlgorithms[2].description}\nEnter 0, 1, or 2: `);
 
   if (scoringPref === '0'){
-    console.log(`Score for '${word}': ${scoringAlgorithms[0].scoringFunction(word)}\n`);
+    console.log(`Score for '${word}': ${scoringAlgorithms[0].scorerFunction(word)}\n`);
   }
   else if (scoringPref === '1'){
-    console.log(`Score for '${word}': ${scoringAlgorithms[1].scoringFunction(word)}\n`);
+    console.log(`Score for '${word}': ${scoringAlgorithms[1].scorerFunction(word)}\n`);
   }
   else if (scoringPref === '2'){
-    console.log(`Score for '${word}': ${scoringAlgorithms[2].scoringFunction(word)}\n`);
+    console.log(`Score for '${word}': ${scoringAlgorithms[2].scorerFunction(word)}\n`);
   }
   else{
     console.log('Invalid input, please try again.')
