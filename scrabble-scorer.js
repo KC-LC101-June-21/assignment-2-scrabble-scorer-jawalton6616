@@ -35,7 +35,7 @@ let newPointStructure = transform(oldPointStructure);
 function initialPrompt() {
 let wordPlayed = input.question("Let's play some scrabble!\n\nEnter a word to score: ");
 return wordPlayed;
-//testing algorithms
+
 };
 
 function oldScrabbleScorer(word) {
@@ -59,9 +59,9 @@ function oldScrabbleScorer(word) {
 // don't change the names or your program won't work as expected. //
 function simpleScore(word){
   let letterPoints = word.length;
-  // for (i = 0; i<word.length; i++){
-  //   console.log(`\nPoints for '${word[i]}': ${letterPoints/word.length}'`)
-  // }
+  for (i = 0; i<word.length; i++){
+    console.log(`\nPoints for '${word[i]}': ${letterPoints/word.length}'`)
+  }
 	return letterPoints;
 };
 
@@ -69,16 +69,16 @@ function vowelBonusScore (word){
   word = word.toLowerCase();
 
   let letterPoints =0;
-  let vowels = ['A','E','I','O','U'];
-  let consonants = ['B','C','D','E','F','G','H','J','K','L','M','N','P','Q','R','S','T','V','W','X','Y','Z'];
+  let vowels = ['a','e','i','o','u'];
+  let consonants = ['b','c','d','f','g','h','j','k','l','m','n','p','q','r','s','t','v','w','x','y','z'];
   for (i =0; i<word.length; i++){
     if (word[i]===vowels[0]||word[i]===vowels[1]||word[i]===vowels[2]||word[i]===vowels[3]||word[i]===vowels[4]){
       letterPoints = letterPoints+3;
-      // console.log(`\nPoints for '${word[i]}': 3`)
+      console.log(`\nPoints for '${word[i]}': 3`)
     }
     else{
       letterPoints = letterPoints +1;
-    // console.log(`Points for '${word[i]}': 1`)
+    console.log(`Points for '${word[i]}': 1`)
 
     }
 
@@ -90,34 +90,15 @@ function scrabbleScore(word) {
 	word = word.toLowerCase();
 	let letterPoints = "";
   let score =0;
-	for (let i = 0; i < word.length; i++) {
- 
+	for (let i = 0; i < word.length; i++) { 
 	  for (const pointValue in oldPointStructure) {
- 
 		 if (oldPointStructure[pointValue].includes(word[i])) {
-       score = score + Number(pointValue);
-
-		 }
-
- 
+       	score = score + Number(pointValue);
+		 } 
 	  }
 	}
 	return score;  
  }
-
-// for (let i = 0; i < word.length; i++) { 
-// 	for (j=0; j<Object.keys(newPointStructure).length;j++){
-//     for(points in obj){      
-//     }
-//   console.log(Object.keys(newPointStructure)[j][0])
-//     score = score + Number(newPointStructure); 
-// 	}
-// }
-
-//  console.log(Object.keys(newPointStructure)[i])
-//  score = score + Number(newPointStruct[pointValue]);
-// letterPoints += `\nPoints for '${word[i]}'{pointValue}\n`
-
 
 const scoringAlgorithms = [
 {
@@ -153,13 +134,10 @@ function scorerPrompt(word) {
     console.log('Invalid input, please try again.')
   }
 
-}
-  
+}  
 
 function runProgram(word) {
   scorerPrompt(initialPrompt())
-  // initialPrompt();
-  // scorerPrompt(word);
 }
 
 // Don't write any code below this line //
