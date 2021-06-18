@@ -39,7 +39,7 @@ return wordPlayed;
 };
 
 function oldScrabbleScorer(word) {
-	word = word.toUpperCase();
+	word = word.toLowerCase();
 	let letterPoints = "";
  
 	for (let i = 0; i < word.length; i++) {
@@ -66,7 +66,7 @@ function simpleScore(word){
 };
 
 function vowelBonusScore (word){
-  word = word.toUpperCase();
+  word = word.toLowerCase();
 
   let letterPoints =0;
   let vowels = ['A','E','I','O','U'];
@@ -87,7 +87,7 @@ function vowelBonusScore (word){
 };
 
 function scrabbleScore(word) {
-	word = word.toUpperCase();
+	word = word.toLowerCase();
 	let letterPoints = "";
   let score =0;
 	for (let i = 0; i < word.length; i++) {
