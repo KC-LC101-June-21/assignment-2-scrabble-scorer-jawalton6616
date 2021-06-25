@@ -20,7 +20,7 @@ for(i=0;i<26;i++){
 sortedObj = Object.keys(newObj)
     .sort()
     .reduce(function (acc, key) { 
-        acc[key] = newObj[key];
+        acc.toString()[key] = newObj[key];
         return acc;
     }, {});
     sortedObj[' ']=0;
