@@ -1,13 +1,13 @@
 // inspired by https://exercism.io/tracks/javascript/exercises/etl/solutions/91f99a3cca9548cebe5975d7ebca6a85
 const input = require("readline-sync");
 const oldPointStructure = {
-  1: ['a', 'e', 'i', 'o', 'u', 'l', 'n', 'r', 's', 't'],
-  2: ['d', 'g'],
-  3: ['b', 'c', 'm', 'p'],
-  4: ['f', 'h', 'v', 'w', 'y'],
-  5: ['k'],
-  8: ['j', 'x'],
-  10: ['q', 'z']
+  1: ['A', 'E', 'I', 'O', 'U', 'L', 'N', 'R', 'S', 'T'],
+  2: ['D', 'G'],
+  3: ['B', 'C', 'M', 'P'],
+  4: ['F', 'H', 'V', 'W', 'Y'],
+  5: ['K'],
+  8: ['J', 'X'],
+  10: ['Q', 'Z']
 };
 
 function transform(obj) {
@@ -20,14 +20,14 @@ for(i=0;i<26;i++){
 sortedObj = Object.keys(newObj)
     .sort()
     .reduce(function (acc, key) { 
-        acc.toString()[key] = newObj[key];
+        acc[key] = newObj[key];
         return acc;
     }, {});
-    sortedObj[' ']=0;
+    // sortedObj[' ']=0;
 return sortedObj
 };
 
-console.log('transform: ', transform(oldPointStructure));
+// console.log('transform: ', transform(oldPointStructure));
 
 let newPointStructure = transform(oldPointStructure);
 
@@ -39,7 +39,7 @@ return wordPlayed;
 };
 
 function oldScrabbleScorer(word) {
-	word = word.toLowerCase();
+	word = word.toUpperCase();
 	let letterPoints = "";
  
 	for (let i = 0; i < word.length; i++) {
@@ -66,11 +66,11 @@ function simpleScore(word){
 };
 
 function vowelBonusScore (word){
-  word = word.toLowerCase();
+  word = word.toUpperCase();
 
   let letterPoints =0;
-  let vowels = ['a','e','i','o','u'];
-  let consonants = ['b','c','d','f','g','h','j','k','l','m','n','p','q','r','s','t','v','w','x','y','z'];
+  let vowels = ['A','E','I','O','U'];
+  let consonants = ['B','C','D','E','F','G','H','J','K','L','M','N','P','Q','R','S','T','V','W','X','Y','Z'];
   for (i =0; i<word.length; i++){
     if (word[i]===vowels[0]||word[i]===vowels[1]||word[i]===vowels[2]||word[i]===vowels[3]||word[i]===vowels[4]){
       letterPoints = letterPoints+3;
@@ -87,7 +87,7 @@ function vowelBonusScore (word){
 };
 
 function scrabbleScore(word) {
-	word = word.toLowerCase();
+	word = word.toUpperCase();
 	let letterPoints = "";
   let score =0;
 	for (let i = 0; i < word.length; i++) { 
