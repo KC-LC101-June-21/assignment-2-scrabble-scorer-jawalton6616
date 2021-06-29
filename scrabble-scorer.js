@@ -23,7 +23,7 @@ function transform(obj) {
       acc[key] = newObj[key];
       return acc;
     }, {});
-  sortedObj[' ']=0;
+  // sortedObj[' ']=0;
   return sortedObj;
 }
 
