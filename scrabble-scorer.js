@@ -37,18 +37,21 @@ function initialPrompt() {
 }
 
 function oldScrabbleScorer(word) {
-  word = word.toUpperCase();
-  let letterPoints = "";
+	word = word.toLowerCase();
+	let letterPoints = "";
 
-  for (let i = 0; i < word.length; i++) {
-    for (const pointValue in oldPointStructure) {
-      if (oldPointStructure[pointValue].includes(word[i])) {
-        letterPoints += `Points for '${word[i]}': ${pointValue}\n`;
-      }
-    }
-  }
-  return letterPoints;
-}
+	for (let i = 0; i < word.length; i++) {
+
+	  for (const pointValue in oldPointStructure) {
+
+		 if (oldPointStructure[pointValue].includes(word[i])) {
+			letterPoints += `Points for '${word[i]}': ${pointValue}\n`
+		 }
+
+	  }
+	}
+	return letterPoints;
+ }
 
 // your job is to finish writing these functions and variables that we've named //
 // don't change the names or your program won't work as expected. //
@@ -61,7 +64,7 @@ function simpleScore(word) {
 }
 
 function vowelBonusScore(word) {
-  word = word.toUpperCase();
+  word = word.toLowerCase();
 
   let letterPoints = 0;
   let vowels = ["A", "E", "I", "O", "U"];
@@ -84,7 +87,7 @@ function vowelBonusScore(word) {
 };
 
 function scrabbleScore(word) {
-  word = word.toUpperCase();
+  word = word.toLowerCase();
   let score = 0;
   for (let i = 0; i <word.length; i++){
     for (let letter in newPointStructure){
