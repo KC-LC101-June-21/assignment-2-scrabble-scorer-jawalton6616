@@ -105,17 +105,17 @@ const scoringAlgorithms = [
 {
   name:"Simple Score",
   description:'Each letter is worth 1 point.',
-  scorerFunction:simpleScore,
+  scoringFunction:simpleScore,
 },
 {
   name:"Bonus Vowels",
   description:'Vowels are 3 pts, consonants are 1 pt.',
-  scorerFunction:vowelBonusScore,
+  scoringFunction:vowelBonusScore,
 },
 {
   name:"Scrabble",
   description:'The traditional scoring algorithm.',
-  scorerFunction:scrabbleScore,
+  scoringFunction:scrabbleScore,
 }];
 
 
@@ -124,13 +124,13 @@ function scorerPrompt(word) {
 
   switch(scoringPref) {
   case '0':
-    console.log(`Score for '${word}': ${scoringAlgorithms[0].scorerFunction(word)}\n`);
+    console.log(`Score for '${word}': ${scoringAlgorithms[0].scoringFunction(word)}\n`);
     break;
   case '1':
-    console.log(`Score for '${word}': ${scoringAlgorithms[1].scorerFunction(word)}\n`);
+    console.log(`Score for '${word}': ${scoringAlgorithms[1].scoringFunction(word)}\n`);
     break;
   case '2':
-    console.log(`Score for '${word}': ${scoringAlgorithms[2].scorerFunction(word)}\n`);
+    console.log(`Score for '${word}': ${scoringAlgorithms[2].scoringFunction(word)}\n`);
     break;
   default:
     console.log('Invalid input, please try again.')
