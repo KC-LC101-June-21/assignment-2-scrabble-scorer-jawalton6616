@@ -17,17 +17,20 @@ function transform(obj) {
       newObj[obj[i + 1][key]] = i + 1;
     }
   }
-  sortedObj = Object.keys(newObj)
-    .sort()
-    .reduce(function (acc, key) {
-      acc[key] = newObj[key];
+  const reducer = (acc, currentVal) => {
+      acc[currentVal] = newObj[currentVal];
       return acc;
-    }, {});
-  // sortedObj[' ']=0;
+  };
+
+  sortedObj = Object.keys(newObj).reduce(reducer,{' ':0});
+  
   return sortedObj;
 }
 
 let newPointStructure = transform(oldPointStructure);
+
+//test
+console.log(newPointStructure)
 
 function initialPrompt() {
   let wordPlayed = input.question(
