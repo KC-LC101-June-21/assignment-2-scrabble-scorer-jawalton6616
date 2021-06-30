@@ -1,12 +1,12 @@
 const input = require("readline-sync");
 const oldPointStructure = {
-  1: ["A", "E", "I", "O", "U", "L", "N", "R", "S", "T"],
-  2: ["D", "G"],
-  3: ["B", "C", "M", "P"],
-  4: ["F", "H", "V", "W", "Y"],
-  5: ["K"],
-  8: ["J", "X"],
-  10: ["Q", "Z"],
+  1: ["a", "e", "i", "o", "u", "l", "n", "r", "s", "t"],
+  2: ["d", "g"],
+  3: ["b", "c", "m", "p"],
+  4: ["f", "h", "v", "w", "y"],
+  5: ["k"],
+  8: ["j", "x"],
+  10: ["q", "z"],
 };
 
 function transform(obj) {
@@ -41,7 +41,7 @@ function initialPrompt() {
 }
 
 function oldScrabbleScorer(word) {
-  word = word.toUpperCase();
+  word = word.toLowerCase();
   let letterPoints = "";
 
   for (let i = 0; i < word.length; i++) {
@@ -65,10 +65,10 @@ function simpleScore(word) {
 }
 
 function vowelBonusScore(word) {
-  word = word.toUpperCase();
+  word = word.toLowerCase();
 
   let letterPoints = 0;
-  let vowels = ["A", "E", "I", "O", "U"];
+  let vowels = ["a", "e", "i", "o", "u"];
   for (i = 0; i < word.length; i++) {
     if (
       word[i] === vowels[0] ||
@@ -88,7 +88,7 @@ function vowelBonusScore(word) {
 };
 
 function scrabbleScore(word) {
-  word = word.toUpperCase();
+  word = word.toLowerCase();
   let score = 0;
   for (let i = 0; i <word.length; i++){
     for (let letter in newPointStructure){
