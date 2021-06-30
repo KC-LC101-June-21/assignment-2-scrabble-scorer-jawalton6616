@@ -14,24 +14,24 @@ function transform(obj) {
   for (i = 0; i < 26; i++) {
     for (key in obj[i + 1]) {
       newObj[obj[i + 1][key]] = i + 1;
-    }
-    
+    }    
   }
-  sortedObj = Object.keys(newObj)
+  const reducer = (acc, currentVal) => {
+    acc[currentVal] = newObj[currentVal];
+    return acc;
+  }
+
+  transformedObj = Object.keys(newObj)
     // .sort()
-    .reduce(function (acc, key) {
-      acc[key] = newObj[key];
-      return acc;
-    }, {});
-  // sortedObj[' ']=0;
-  return sortedObj;
+    .reduce(reducer, {});
+  // transformedObj[' ']=0;
+  return transformedObj;
 }
 
 // console.log('transform: ', transform(oldPointStructure));
 
 let newPointStructure = transform(oldPointStructure);
 console.log(newPointStructure);
-
 
 function initialPrompt() {
   let wordPlayed = input.question(
