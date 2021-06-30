@@ -1,4 +1,3 @@
-// inspired by https://exercism.io/tracks/javascript/exercises/etl/solutions/91f99a3cca9548cebe5975d7ebca6a85
 const input = require("readline-sync");
 const oldPointStructure = {
   1: ["A", "E", "I", "O", "U", "L", "N", "R", "S", "T"],
@@ -16,21 +15,23 @@ function transform(obj) {
     for (key in obj[i + 1]) {
       newObj[obj[i + 1][key]] = i + 1;
     }
+    
   }
-  const reducer = (acc, currentVal) => {
-      acc[currentVal] = newObj[currentVal];
+  sortedObj = Object.keys(newObj)
+    // .sort()
+    .reduce(function (acc, key) {
+      acc[key] = newObj[key];
       return acc;
-  };
-
-  sortedObj = Object.keys(newObj).reduce(reducer,{' ':0});
-  
+    }, {});
+  // sortedObj[' ']=0;
   return sortedObj;
 }
 
-let newPointStructure = transform(oldPointStructure);
+// console.log('transform: ', transform(oldPointStructure));
 
-//test
-console.log(newPointStructure)
+let newPointStructure = transform(oldPointStructure);
+console.log(newPointStructure);
+
 
 function initialPrompt() {
   let wordPlayed = input.question(
@@ -40,21 +41,18 @@ function initialPrompt() {
 }
 
 function oldScrabbleScorer(word) {
-	word = word.toLowerCase();
-	let letterPoints = "";
+  word = word.toUpperCase();
+  let letterPoints = "";
 
-	for (let i = 0; i < word.length; i++) {
-
-	  for (const pointValue in oldPointStructure) {
-
-		 if (oldPointStructure[pointValue].includes(word[i])) {
-			letterPoints += `Points for '${word[i]}': ${pointValue}\n`
-		 }
-
-	  }
-	}
-	return letterPoints;
- }
+  for (let i = 0; i < word.length; i++) {
+    for (const pointValue in oldPointStructure) {
+      if (oldPointStructure[pointValue].includes(word[i])) {
+        letterPoints += `Points for '${word[i]}': ${pointValue}\n`;
+      }
+    }
+  }
+  return letterPoints;
+}
 
 // your job is to finish writing these functions and variables that we've named //
 // don't change the names or your program won't work as expected. //
@@ -67,7 +65,7 @@ function simpleScore(word) {
 }
 
 function vowelBonusScore(word) {
-  word = word.toLowerCase();
+  word = word.toUpperCase();
 
   let letterPoints = 0;
   let vowels = ["A", "E", "I", "O", "U"];
@@ -90,11 +88,12 @@ function vowelBonusScore(word) {
 };
 
 function scrabbleScore(word) {
-  word = word.toLowerCase();
+  word = word.toUpperCase();
   let score = 0;
   for (let i = 0; i <word.length; i++){
     for (let letter in newPointStructure){
       if (letter == word[i]){
+        // console.log(newPointStructure[letter])
         score = score + newPointStructure[letter];
       }      
     }   
@@ -121,7 +120,7 @@ const scoringAlgorithms = [
 
 
 function scorerPrompt(word) {
-  let scoringPref = input.question(`Which scoring algorithm would you like to use?\n\n0 - ${scoringAlgorithms[0].name}: ${scoringAlgorithms[0].description}\n1 - ${scoringAlgorithms[1].name}: ${scoringAlgorithms[1].description}\n2 - ${scoringAlgorithms[2].name}: ${scoringAlgorithms[2].description}\nEnter 0, 1, or 2: \n`);
+  let scoringPref = input.question(`Which scoring algorithm would you like to use?\n\n0 - ${scoringAlgorithms[0].name}: ${scoringAlgorithms[0].description}\n1 - ${scoringAlgorithms[1].name}: ${scoringAlgorithms[1].description}\n2 - ${scoringAlgorithms[2].name}: ${scoringAlgorithms[2].description}\nEnter 0, 1, or 2: `);
 
   switch(scoringPref) {
   case '0':
